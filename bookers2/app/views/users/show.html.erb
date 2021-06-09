@@ -1,0 +1,10 @@
+<h1>ユーザー個人ページ</h1>
+
+<div>
+  <h4>User info</h4>
+  <li>name:<%= @user.name %></li>
+  <li>introduction</li>
+  <li>
+    <%= link_to 'Edit', edit_user_path(current_user.id) %>
+  </li>
+</div>
