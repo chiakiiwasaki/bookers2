@@ -1,7 +1,8 @@
 class UsersController < ApplicationController
 
   def index
-    @user = User.find(params[:id])
+    @users = User.all
+    @user = current_user
   end
 
   def create
@@ -12,6 +13,7 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
+    @book = Book.new
   end
 
   def update
@@ -25,7 +27,7 @@ class UsersController < ApplicationController
 
   private
   def book_params
-    params.permit(:title, :body)
+    params.require(:book).permit(:title, :body)
   end
 
 end
