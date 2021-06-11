@@ -1,10 +1,19 @@
+<body>
 <h1>User info</h1>
-<%= form_with model: @post_image, local:true do |f| %>
-  <h4>Name</h4>
-  <%#= f.attachment_field :image %>
-  <h4>画像</h4>
-  <%#= f.attachment_field :image %>
-  <h4>Introduction</h4>
-  <%= f.text_area :caption %>
-  <%= f.submit 'Update User' %>
+<%= form_with model:@user, local:true do |f| %>
+  <div>
+    <label>Name</label>
+    <%= f.text_field :name, autofocus: true, id:"inputName", placeholder:"名前"%>
+  </div>
+  <%#= attachment_image_tag @user, :profile_image, :fill, 60, 60, fallback: "no_image.jpg"%>
+  <div>
+    <label>Image</label>
+    <%= f.attachment_field :profile_image, placeholder: "プロフィール画像" %>
+  </div>
+  <div>
+    <label>Introduction</label>
+    <%= f.text_area :caption %>
+  </div>
+  <div><%= f.submit "Update User" %></div>
 <% end %>
+</body>

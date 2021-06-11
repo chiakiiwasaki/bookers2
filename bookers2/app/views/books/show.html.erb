@@ -1,4 +1,4 @@
-<h1>books一覧</h1>
+<h1>本の詳細ページ</h1>
 
 <div>
   <h4>User info</h4>
@@ -9,6 +9,7 @@
   </li>
 </div>
 
+
 <h4>New book</h4>
 <%= form_with model:@new_book, local:true do |f| %>
   <li>Title</li>
@@ -18,9 +19,7 @@
   <%= f.submit 'Create book' %>
 <% end %>
 
-<h4>Books</h>
-  <p>Title</p>
-  <p>Opinion</p>
-  <% @books.each do |book| %>
-  <li><%= link_to book.title, book_path(book.id) %><%= book.body %></li>
-  <% end %>
+
+ <h1>Book detail</h1>
+ <%= @book.title %>
+ <%= @book.body %>

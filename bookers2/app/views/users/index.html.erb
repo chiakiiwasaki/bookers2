@@ -2,11 +2,19 @@
 
 <div>
   <h4>User info</h4>
+  <%= attachment_image_tag @user, :profile_image, :fill, 100, 100, format: 'jpeg', fallback: "no_image.jpg" %>
   <li>name:<%= @user.name %></li>
-  <li>introduction</li>
-  <li>
-    <%= link_to 'Edit', edit_user_path(current_user.id) %>
-  </li>
+  <li>introduction:<%= @user.caption %></li>
+  <li><%= link_to 'Edit', edit_user_path(current_user.id) %></li>
+
+  <h4>New book</h4>
+  <%= form_with model:@new_book, local:true do |f| %>
+    <li>Title</li>
+    <%= f.text_field :title %>
+    <li>Opinion</li>
+    <%= f.text_area :body %>
+    <%= f.submit 'Create book' %>
+  <% end %>
 </div>
 
 
