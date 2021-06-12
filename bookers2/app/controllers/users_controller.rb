@@ -12,6 +12,8 @@ class UsersController < ApplicationController
     #@user = current_user
     @user = User.find(params[:id])
     @new_book = Book.new
+    #@books = Book.all
+    @books = @user.books
   end
 
   def update
@@ -25,8 +27,6 @@ class UsersController < ApplicationController
      @user = User.find(params[:id])
   end
 
-  def destroy
-  end
 
   private
   def user_params

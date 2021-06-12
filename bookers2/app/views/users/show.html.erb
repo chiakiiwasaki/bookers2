@@ -4,7 +4,7 @@
   <h4>User info</h4>
   <%= attachment_image_tag @user, :profile_image, :fill, 100, 100, format: 'jpeg', fallback: "no_image.jpg" %>
   <li>name:<%= @user.name %></li>
-  <li>introduction:<%= @user.caption %></li>
+  <li>introduction:<%= @user.introduction %></li>
   <li><%= link_to 'Edit', edit_user_path(current_user.id) %></li>
 
   <h4>New book</h4>
@@ -18,10 +18,13 @@
 </div>
 
 <div>
-  <h4>Books</h>
+  <h4>Books</h4>
   <p>Title</p>
   <p>Opinion</p>
-  <% @books.each do |book| %>
-  <li><%= link_to book.title, book_path(book.id) %><%= book.body %></li>
+  <% @user.books.each do |book| %>
+  <li>
+    <%= link_to book.title, book_path(book.id) %>
+    <%= book.body %>
+  </li>
   <% end %>
 </div>
