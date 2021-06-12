@@ -1,20 +1,56 @@
-<h1>ユーザー一覧</h1>
+<p id="notice"></p>
 
 <div>
-  <h4>User info</h4>
+  <h2>User info</h2>
   <%= attachment_image_tag @user, :profile_image, :fill, 100, 100, format: 'jpeg', fallback: "no_image.jpg" %>
-  <li>name:<%= @user.name %></li>
-  <li>introduction:<%= @user.caption %></li>
-  <li><%= link_to 'Edit', edit_user_path(current_user.id) %></li>
+  <table>
+    <tbody>
+      <tr></tr>
+      <tr>
+        <th>name</th>
+        <th><%= @user.name %></th>
+      </tr>
+      <tr>
+        <th>introduction</th>
+        <th><%= @user.introduction %></th>
+      </tr>
+    </tbody>
+  </table>
 
-  <h4>New book</h4>
+  <div><%= link_to 'Edit', edit_user_path(current_user.id) %></div>
+
+  <h2>New book</h2>
   <%= form_with model:@new_book, local:true do |f| %>
-    <li>Title</li>
-    <%= f.text_field :title %>
-    <li>Opinion</li>
-    <%= f.text_area :body %>
-    <%= f.submit 'Create book' %>
+    <div>
+      <lable>Title</label>
+      <%= f.text_field :title %>
+    </div>
+    <div>
+      <label>Opinion</label>
+      <%= f.text_area :body %>
+    </div>
+    <div><%= f.submit 'Create book' %></div>
   <% end %>
 </div>
 
 
+<div>
+  <h2>Users</h2>
+  <table>
+    <thead>
+      <tr>
+        <th>image</th>
+        <th>name</th>
+      </tr>
+    </thead>
+    <tbody>
+    <% @users.each do |user| %>
+      <tr>
+        <td><%= attachment_image_tag user, :profile_image, :fill, 100, 100, format: 'jpeg', fallback: "no_image.jpg" %></td>
+        <td><%= user.name %></td>
+        <td><%= link_to "Show", user_path(user.id) %></td>
+      </tr>
+    <% end %>
+    </tbody>
+  </table>
+</div>

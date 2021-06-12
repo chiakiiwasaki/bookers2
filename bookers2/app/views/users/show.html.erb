@@ -1,30 +1,57 @@
-<h1>ユーザー個人ページ</h1>
+<p id="notice"></p>
 
 <div>
-  <h4>User info</h4>
+  <h2>User info</h2>
   <%= attachment_image_tag @user, :profile_image, :fill, 100, 100, format: 'jpeg', fallback: "no_image.jpg" %>
-  <li>name:<%= @user.name %></li>
-  <li>introduction:<%= @user.introduction %></li>
-  <li><%= link_to 'Edit', edit_user_path(current_user.id) %></li>
+  <table>
+    <tbody>
+      <tr></tr>
+      <tr>
+        <th>name</th>
+        <th><%= @user.name %></th>
+      </tr>
+      <tr>
+        <th>introduction</th>
+        <th><%= @user.introduction %></th>
+      </tr>
+    </tbody>
+  </table>
 
-  <h4>New book</h4>
+  <div><%= link_to 'Edit', edit_user_path(current_user.id) %></div>
+
+  <h2>New book</h2>
   <%= form_with model:@new_book, local:true do |f| %>
-    <li>Title</li>
-    <%= f.text_field :title %>
-    <li>Opinion</li>
-    <%= f.text_area :body %>
-    <%= f.submit 'Create book' %>
+    <div>
+      <lable>Title</label>
+      <%= f.text_field :title %>
+    </div>
+    <div>
+      <label>Opinion</label>
+      <%= f.text_area :body %>
+    </div>
+    <div><%= f.submit 'Create book' %></div>
   <% end %>
 </div>
 
 <div>
-  <h4>Books</h4>
-  <p>Title</p>
-  <p>Opinion</p>
-  <% @user.books.each do |book| %>
-  <li>
-    <%= link_to book.title, book_path(book.id) %>
-    <%= book.body %>
-  </li>
-  <% end %>
+  <h2>Books</h2>
+  <table>
+    <thead>
+      <tr>
+        <th></th>
+        <th>Title</th>
+        <th>Opinion</th>
+        <th></th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @user.books.each do |book| %>
+      <tr>
+         <td><%= attachment_image_tag @user, :profile_image, :fill, 50, 50, format: 'jpeg', fallback: "no_image.jpg" %></td>
+         <td><%= link_to book.title, book_path(book.id) %></td>
+         <td><%= book.body %></td>
+      </tr>
+      <% end %>
+    </tbody>
+  </table>
 </div>
