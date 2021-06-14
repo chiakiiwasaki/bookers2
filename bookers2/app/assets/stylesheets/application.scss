@@ -71,18 +71,17 @@ header{
  border-radius: 0.25rem;
 }
 
-li{
- display: inline-block;
-}
+
 
 li i,span{
  color: white;
 }
 
-ul{
- list-style: none;
+
+p.notice{
+ color: green;
 }
 
-// li:hover{
-//  color: grey;
-// }
+div.field, div.actions{
+ margin-bottom: 10px;
+}

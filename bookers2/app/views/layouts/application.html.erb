@@ -55,7 +55,7 @@
                   <% end %>
                 </li>
                 <li class="nav-link text-light">
-                  <%= link_to '/about' do %>
+                  <%= link_to home_about_path do %>
                     <i class="fas fa-link"></i>
                     <span>About</span>
                   <% end %>
@@ -80,7 +80,7 @@
     </header>
 
     <main>
-      <p id="noti"></p>
+      <p class="notice"><%= notice %></p>
       <%= yield %>
     </main>
 
